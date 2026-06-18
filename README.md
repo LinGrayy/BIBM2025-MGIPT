@@ -1,80 +1,60 @@
-# Academic Project Page Template
+# :page_facing_up: MGIPT
+This is the official pytorch implementation of our BIBM 2025 paper "[Multi-Scale Global-Instance Prompt Tuning for Continual Test-time Adaptation in Medical Image Segmentation](https://ieeexplore.ieee.org/abstract/document/11356288/?casa_token=_e0ORbUVTbwAAAAA:9sJ4kAaOs3E6wQnP-UDm3WH1LhxeoqbBPv9v-KYl6tpxBuIU5j717rI2LdMwjCq_KM_zhL9cDkY)".
 
-> **Update (September 2025)**: This template has been modernized with better design, SEO, and mobile support. For the original version, see the [original-version branch](https://github.com/eliahuhorwitz/Academic-project-page-template/tree/original-version).
+<div align="center">
+  <img width="100%" alt="MGIPT Illustration" src="github/Overview.png">
+</div>
 
-A clean, responsive template for academic project pages.
+## Environment
+```
+CUDA 10.1
+Python 3.7.0
+Pytorch 1.8.0
+CuDNN 8.0.5
+```
+Our Anaconda environment is also available for download from ```llr``` dir.
 
+Upon decompression, please move ```llr``` to ```your_root/anaconda3/envs/```. Then the environment can be activated by ```conda activate llr```.
 
-Example project pages built using this template are:
-- https://horwitz.ai/probex
-- https://vision.huji.ac.il/probegen
-- https://horwitz.ai/mother
-- https://horwitz.ai/spectral_detuning
-- https://vision.huji.ac.il/ladeda
-- https://vision.huji.ac.il/dsire
-- https://horwitz.ai/podd
-- https://dreamix-video-editing.github.io
-- https://horwitz.ai/conffusion
-- https://horwitz.ai/3d_ads/
-- https://vision.huji.ac.il/ssrl_ad
-- https://vision.huji.ac.il/deepsim
+## Data Preparation
+The preprocessed data can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1axgu3-65un-wA_1OH-tQIUIEHEDrnS_-?usp=drive_link).
 
+## Pre-trained Models
+Download pre-trained models from [Google Drive](https://drive.google.com/drive/folders/1WWRbFLN3ELGbNs9jnl5bt4bIHuha8jWw?usp=drive_link) and drag the folder 'models' into the folder 'OPTIC' or 'POLYP'.
 
+You can also train your own models from scratch following:
 
-## Start using the template
-To start using the template click on `Use this Template`.
+* **OD/OC Segmentation**
+```
+CUDA_VISIBLE_DEVICES=0 python OPTIC/train_source.py --Source_Dataset RIM_ONE_r3 --path_save_log OPTIC/logs --path_save_model OPTIC/models --dataset_root your_dataset_root
+```
+* **Polyp Segmentation**
 
-The template uses html for controlling the content and css for controlling the style. 
-To edit the websites contents edit the `index.html` file. It contains different HTML "building blocks", use whichever ones you need and comment out the rest.  
+Please refer to the Pytorch implementation of [PraNet](https://github.com/DengPingFan/PraNet).
 
-**IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
+## How to Run
+Please first modify the root in ```MGIPT_OPTIC.sh``` and ```MGIPT_POLYP.sh```, and then run the following command to reproduce the results.
+```
+# Reproduce the results on the OD/OC segmentation task
+bash MGIPT_OPTIC.sh
+# Reproduce the results on the polyp segmentation task
+bash MGIPT_POLYP.sh
+```
 
-## What's New
+## Citation ✏️
+If this code is helpful for your research, please cite:
+```
+@inproceedings{li2025multi,
+  title={Multi-Scale Global-Instance Prompt Tuning for Continual Test-time Adaptation in Medical Image Segmentation},
+  author={Li, Lingrui and Zhou, Yanfeng and Pu, Nan and Chen, Xin and Zhong, Zhun},
+  booktitle={2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)},
+  pages={2395--2402},
+  year={2025},
+  organization={IEEE}
+}
+```
+## Acknowledgement
+Our code is heavily adopted from the Pytorch implementations of [VPTTA](https://github.com/Chen-Ziyang/VPTTA).
 
-- Modern, clean design with better mobile support
-- Improved SEO with proper meta tags and structured data
-- Performance improvements (lazy loading, optimized assets)
-- More Works dropdown
-- Copy button for BibTeX citations
-- Better accessibility
-
-## Components
-
-- Teaser video
-- Image carousel
-- YouTube video embedding
-- Video carousel
-- PDF poster viewer
-- BibTeX citation
-
-## Customization
-
-The HTML file has TODO comments showing what to replace:
-
-- Paper title, authors, institution, conference
-- Links (arXiv, GitHub, etc.)
-- Abstract and descriptions  
-- Videos, images, and PDFs
-- Related works in the dropdown
-- Meta tags for SEO and social sharing
-
-### Meta Tags
-The template includes meta tags for better search engine visibility and social media sharing. These appear in the `<head>` section and help with:
-- Google Scholar indexing
-- Social media previews (Twitter, Facebook, LinkedIn)
-- Search engine optimization
-
-Create a 1200x630px social preview image at `static/images/social_preview.png`.
-
-## Tips
-
-- Compress images with [TinyPNG](https://tinypng.com)
-- Use YouTube for large videos (>10MB)  
-- Replace the favicon in `static/images/`
-- Works with GitHub Pages
-
-## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
-
-## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+## Contact
+Lingrui Li (lingrui.li@nottingham.ac.uk)
